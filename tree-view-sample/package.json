@@ -1,0 +1,264 @@
+{
+	"name": "custom-view-samples",
+	"displayName": "Custom view Samples",
+	"description": "Samples for VSCode's view API",
+	"version": "0.0.1",
+	"publisher": "vscode-samples",
+	"enableProposedApi": true,
+	"engines": {
+		"vscode": "^1.46.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:nodeDependencies",
+		"onView:ftpExplorer",
+		"onView:jsonOutline",
+		"onView:fileExplorer",
+		"onView:testView",
+		"onLanguage:json",
+		"onLanguage:jsonc",
+		"onCommand:testView.reveal"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"viewsWelcome": [
+			{
+			  "view": "nodeDependencies",
+			  "contents": "No config files found. Please select the following actions:\n1. If you need an empty config to customize your own config, you can create and save it as a local file.\n[Create empty config](command:nodeDependencies.create)\n2. If you need to customize your own config based on the default config published from Microsoft, you can load the default config.\n[Load default config](command:nodeDependencies.createDefault)\n3. If you have an existing config, you can open it directly.\n[Load existing config](command:nodeDependencies.open)"
+			}
+		  ],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "package-explorer",
+					"title": "Resource Explorer",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"views": {
+			"package-explorer": [
+				{
+					"id": "nodeDependencies",
+					"name": "",
+					"icon": "media/dep.svg",
+					"contextualTitle": "Resources Explorer"
+				}
+			],
+			"explorer": [
+			]
+		},
+		"commands": [
+			{
+				"command": "nodeDependencies.refreshEntry",
+				"title": "Preview config",
+				"icon": {
+					"light": "resources/light/dependency.svg",
+					"dark": "resources/dark/dependency.svg"
+				}
+			},
+			{
+				"command": "nodeDependencies.generateConfig",
+				"title": "Generate config",
+				"icon": {
+					"light": "resources/light/export.svg",
+					"dark": "resources/dark/export.svg"
+				}
+			},
+			{
+				"command": "nodeDependencies.create",
+				"title": "Create a new configuration"
+			},
+			{
+				"command": "nodeDependencies.open",
+				"title": "Open a existing configuration"
+			},
+			{
+				"command": "nodeDependencies.keep",
+				"title": "Keep"
+			},
+			{
+				"command": "nodeDependencies.redact",
+				"title": "Redact"
+			},
+			{
+				"command": "nodeDependencies.dateShift",
+				"title": "Date Shift"
+			},
+			{
+				"command": "nodeDependencies.cryptoHash",
+				"title": "CryptoHash"
+			},
+			{
+				"command": "nodeDependencies.encrypt",
+				"title": "Encrypt"
+			},
+			{
+				"command": "nodeDependencies.reset",
+				"title": "--Clear--"
+			},
+			{
+				"command": "ftpExplorer.refresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "ftpExplorer.openFtpResource",
+				"title": "Open FTP Resource"
+			},
+			{
+				"command": "ftpExplorer.revealResource",
+				"title": "Reveal in FTP View"
+			},
+			{
+				"command": "jsonOutline.refresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "jsonOutline.refreshNode",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "jsonOutline.renameNode",
+				"title": "Rename"
+			},
+			{
+				"command": "fileExplorer.refreshFile",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "fileExplorer.openFile",
+				"title": "Open File"
+			},
+			{
+				"command": "testView.reveal",
+				"title": "Test View: Reveal"
+			},
+			{
+				"command": "testView.changeTitle",
+				"title": "Test View: Change Title"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "ftpExplorer.revealResource"
+				}
+			],
+			"view/title": [
+				{
+					"command": "nodeDependencies.generateConfig",
+					"when": "view == nodeDependencies",
+					"group": "navigation"
+				},
+				{
+					"command": "jsonOutline.refresh",
+					"when": "view == jsonOutline",
+					"group": "navigation"
+				},
+				{
+					"command": "ftpExplorer.refresh",
+					"when": "view == ftpExplorer",
+					"group": "navigation"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "nodeDependencies.refreshEntry",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "nodeDependencies.keep",
+					"when": "view == nodeDependencies && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies.redact",
+					"when": "view == nodeDependencies && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies.dateShift",
+					"when": "view == nodeDependencies && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies.cryptoHash",
+					"when": "view == nodeDependencies && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies.encrypt",
+					"when": "view == nodeDependencies && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies.reset",
+					"when": "view == nodeDependencies && viewItem == dependency"
+				},
+				{
+					"command": "jsonOutline.renameNode",
+					"when": "view == jsonOutline"
+				},
+				{
+					"command": "jsonOutline.refreshNode",
+					"when": "view == jsonOutline",
+					"group": "inline"
+				},
+				{
+					"command": "fileExplorer.refreshFile",
+					"when": "view == fileExplorer && viewItem == file",
+					"group": "inline"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"title": "JSON Outline",
+				"properties": {
+					"jsonOutline.autorefresh": {
+						"type": "boolean",
+						"default": false
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"lint": "eslint . --ext .ts,.tsx"
+	},
+	"devDependencies": {
+		"@types/mkdirp": "^0.5.2",
+		"@types/node": "^12.12.0",
+		"@types/rimraf": "^2.0.2",
+		"@types/vscode": "^1.45.0",
+		"typescript": "^3.9.4",
+		"@typescript-eslint/eslint-plugin": "^3.0.2",
+		"@typescript-eslint/parser": "^3.0.2",
+		"eslint": "^7.1.0"
+	},
+	"dependencies": {
+		"jsonc-parser": "^0.4.2",
+		"ftp": "^0.3.10",
+		"mkdirp": "^0.5.1",
+		"rimraf": "^2.6.2",
+		"minimist": "^0.2.1"
+	}
+}
